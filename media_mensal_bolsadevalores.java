@@ -8,12 +8,12 @@ public class media_mensal_bolsadevalores {
 		// TODO Auto-generated method stub
 		
 		Scanner sc = new Scanner(System.in);
-		DecimalFormat fmt = new DecimalFormat("0.0");
+		DecimalFormat fmt = new DecimalFormat("0.00");
 		
-		int diasMes = 28, diasSemana = 7, semana = 1 , l , c;
-		double mediaMensal, somaSemanal;
-		double[][] mediaValores = new double [4] [7];
-		double[] vrSem = new double [4];
+		int  l , c, x;
+		float[][] mediaValores = new float [4] [7];
+		float[] vrSem = new float [4];
+
 		
 		// Introdução
 			System.out.print("Qual o seu nome? ");
@@ -29,31 +29,33 @@ public class media_mensal_bolsadevalores {
 			for(l = 0; l <= 3; l++) {
 					for(c = 0; c <= 6; c++) {
 						System.out.print("Digite o valor do dia "+(c+1)+" da semana "+(l+1)+" :");
-						mediaValores[l][c] = sc.nextDouble();
+						mediaValores[l][c] = sc.nextFloat();
 					}
 			
 			}
 			
-
-			//Soma dos valores nas matrizes 
-			
-			for(l = 0; l <= mediaValores.length; l++ ) {
-				for (c = 0; c <= mediaValores[l].length; c++) {
-					int x = l;
-					}
+			//Soma dos Valores
+			for(l = 0; l <= 3 ; l++) {
+				for(c = 0; c <= 6; c++) {
+					for(x = 0; x <= l; x++) {
+					x = x + l;
+					vrSem[x] = vrSem[x] + mediaValores[l][c];
 				}
-
-			
-			//Apresentação dos valores da matriz
-			System.out.println("Valores das ações \n \n");
-			for (l = 0; l < 4; l++) {
-				for(c = 0; c < 7; c++) {
-					System.out.print(mediaValores[l][c]+" ");
-				}
+					
 			}
+		
 		}
+			
+
+			System.out.printf("Segue os valores da semana 1 %f, semana 2 %f,semana 3 %f,semana 4 %f", vrSem[0], vrSem[1], vrSem[2],vrSem[3]);
+	
+			sc.close();	
+			
+	}
+
+}
 
 		
-	}
+	
 
 
