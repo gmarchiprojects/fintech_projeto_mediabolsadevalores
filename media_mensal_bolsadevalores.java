@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import java.text.DecimalFormat;
-
 
 public class media_mensal_bolsadevalores {
 
@@ -8,7 +6,6 @@ public class media_mensal_bolsadevalores {
 		// TODO Auto-generated method stub
 		
 		Scanner sc = new Scanner(System.in);
-		DecimalFormat fmt = new DecimalFormat("0.00");
 		
 		int  l , c, x;
 		float[][] mediaValores = new float [4] [7];
@@ -49,32 +46,29 @@ public class media_mensal_bolsadevalores {
 						mediaSem[i] = vrSem[i]/7;
 						
 					}
+					
 			//	Apresentar valores médios - Semanal < e > e Mensal
 				float mediaMaior = 0 , mediaMenor = 9999 , mediaMensal = 0;
 				
-				for (int w = 0; w <= mediaSem.length; w++) {
-							for(int a = 0; a <= mediaSem.length; a++){
-							mediaMensal = mediaSem[a] + mediaMensal;
-							}
-							System.out.println(mediaMensal);
-						mediaMensal = mediaMensal/4;
-					}
-				
-				for (int r = 0; r <= mediaSem.length; r++) {
+				for (int r = 0; r <= 3; r++) {
 					if( mediaSem[r]> mediaMaior) {
 						mediaMaior = mediaSem[r];
 					}
 				}
-				for (int p = 0; p < mediaSem.length; p++) {
+				for (int p = 0; p <= 3; p++) {
 					if( mediaSem[p]<= mediaMenor) {
 						mediaMenor = mediaSem[p];
 					}
 				}
+				for (int w = 0; w <= 3;w++) {
+					mediaMensal = mediaSem[w] + mediaMensal;
+
+				}
+				mediaMensal = mediaMensal/4;
 				
-				
-				System.out.printf("O valor médio das ações no mês foi: R$ %f \n", mediaMensal);
-				System.out.printf("O maior valor pago foi no valor R$ %f \n", mediaMaior);
-				System.out.printf("O menor valor pago foi no valor R$ %f \n", mediaMenor);
+				System.out.printf("O valor médio das ações no mês foi: R$ %.2f \n", mediaMensal);
+				System.out.printf("A maior média semanal paga foi no valor R$ %.2f \n", mediaMaior);
+				System.out.printf("A menor média semanal paga foi no valor R$ %.2f \\n", mediaMenor);
 					
 			
 			sc.close();	
