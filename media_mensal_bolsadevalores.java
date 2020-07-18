@@ -25,30 +25,58 @@ public class media_mensal_bolsadevalores {
 		
 		//1º [l] = Linhas(Semanas) 2º [c] = Colunas (Dias)
 
-		//Captura dos Valores na matriz
-			for(l = 0; l <= 3; l++) {
-					for(c = 0; c <= 6; c++) {
-						System.out.print("Digite o valor do dia "+(c+1)+" da semana "+(l+1)+" :");
-						mediaValores[l][c] = sc.nextFloat();
-					}
-			
-			}
-			
-			//Soma dos Valores
-			for(l = 0; l <= 3 ; l++) {
-				for(c = 0; c <= 6; c++) {
-					for(x = 0; x <= l; x++) {
-					x = x + l;
-					vrSem[x] = vrSem[x] + mediaValores[l][c];
+			//Captura dos Valores na matriz
+				for(l = 0; l <= 3; l++) {
+						for(c = 0; c <= 6; c++) {
+							System.out.print("Digite o valor do dia "+(c+1)+" da semana "+(l+1)+" :");
+							mediaValores[l][c] = sc.nextFloat();
+						}
 				}
-					
-			}
-		
-		}
 			
-
-			System.out.printf("Segue os valores da semana 1 %f, semana 2 %f,semana 3 %f,semana 4 %f", vrSem[0], vrSem[1], vrSem[2],vrSem[3]);
-	
+					//Soma dos Valores - Por Semana
+					for(l = 0; l <= 3 ; l++) {
+						for(c = 0; c <= 6; c++) {
+							for(x = 0; x <= l; x++) {
+							x = x + l;
+							vrSem[x] = vrSem[x] + mediaValores[l][c];
+						}		
+					}
+				}
+				
+					//Media dos Valores Semanais
+					float[] mediaSem = new float [4];
+					for (int i = 0; i <= 3; i++) {
+						mediaSem[i] = vrSem[i]/7;
+						
+					}
+			//	Apresentar valores médios - Semanal < e > e Mensal
+				float mediaMaior = 0 , mediaMenor = 9999 , mediaMensal = 0;
+				
+				for (int w = 0; w <= mediaSem.length; w++) {
+							for(int a = 0; a <= mediaSem.length; a++){
+							mediaMensal = mediaSem[a] + mediaMensal;
+							}
+							System.out.println(mediaMensal);
+						mediaMensal = mediaMensal/4;
+					}
+				
+				for (int r = 0; r <= mediaSem.length; r++) {
+					if( mediaSem[r]> mediaMaior) {
+						mediaMaior = mediaSem[r];
+					}
+				}
+				for (int p = 0; p < mediaSem.length; p++) {
+					if( mediaSem[p]<= mediaMenor) {
+						mediaMenor = mediaSem[p];
+					}
+				}
+				
+				
+				System.out.printf("O valor médio das ações no mês foi: R$ %f \n", mediaMensal);
+				System.out.printf("O maior valor pago foi no valor R$ %f \n", mediaMaior);
+				System.out.printf("O menor valor pago foi no valor R$ %f \n", mediaMenor);
+					
+			
 			sc.close();	
 			
 	}
